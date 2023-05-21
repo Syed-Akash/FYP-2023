@@ -4,11 +4,11 @@
   /* overflow: scroll; */
   --color: #afffff;
   color: var(--color);
-  background-color: rgb(255, 255, 255, 0.1);
+  background-color: rgb(86, 186, 223);
   position: relative;
   isolation: isolate;
 
-  box-shadow: rgba(83, 83, 83, 0.15) 0px 48px 100px 0px;
+  box-shadow: rgba(82, 77, 77, 0.15) 0px 48px 100px 0px;
   clip-path: polygon(
     0% var(--curve-size),
     var(--curve-size) 0,

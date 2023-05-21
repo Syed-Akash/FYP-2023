@@ -4,13 +4,12 @@ import { NavLink } from "react-router-dom";
 import upmanyujha from "../../Assets/spider.png";
 import aarondsouza from "../../Assets/nishant.png";
 import bhuvanesh from "../../Assets/saurabh.png";
-import abi from "../../Assets/saurabh.png";
+
 import { Logo } from "../UI";
 import {
   upmanyujhaLink,
   aarondsouzaLink,
   bhuvaneshLink,
-  abiLink,
 } from "../../Constants/social.contact";
 import { sellerAuthContext, userAuthContext } from "../../Contexts";
 
@@ -29,7 +28,7 @@ const Footer = () => {
           <div className={classes.footer_column_logo}>
             {/* <img src={""} alt="logo" className={classes.footer_logo} /> */}
             <Logo />
-            <h4 className={classes.text}>FlipVerse</h4>
+            <h4 className={classes.text}>Products NFTs</h4>
             <h4 className={classes.text}>Shopping is fun!</h4>
           </div>
           <div className={classes.footer_column}>
@@ -104,7 +103,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className={classes.links_special}
               >
-                Upmanyu Jha
+                Syed Akash
               </a>
             </div>
             <div className={classes.link_container}>
@@ -119,7 +118,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className={classes.links_special}
               >
-                Aaron Dsouza
+                Fahad Rafi
               </a>
             </div>
             <div className={classes.link_container}>
@@ -134,10 +133,10 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className={classes.links_special}
               >
-                Bhuvanesh Kolhe
+                Ahmad Arshad
               </a>
             </div>
-            <div className={classes.link_container}>
+            {/* <div className={classes.link_container}>
               <img
                 src={abi}
                 alt="Abde-Abitalib Merchant"
@@ -151,13 +150,13 @@ const Footer = () => {
               >
                 Abde-Abitalib Merchant
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className={classes.footer_bottom}>
           <h3 className={classes.copyright}>
-            <span className={classes.copyright_symbol}> © </span> 2022 by
-            FLIP-VERSE, Inc
+            <span className={classes.copyright_symbol}> © </span> 2022 by AFM,
+            Inc
           </h3>
         </div>
       </div>

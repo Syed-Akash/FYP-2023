@@ -18,10 +18,10 @@
   height: 50vh;
   border-radius: 20px;
   border: 1px solid;
-  background-color: rgb(255, 255, 255, 0.1);
+  background-color: rgba(87, 213, 241, 0.395);
   backdrop-filter: blur(10px);
   padding: 0 40px;
-  padding-top: 60px;
+  padding-top: 30px;
   flex-wrap: wrap;
 }
 .footer_column {

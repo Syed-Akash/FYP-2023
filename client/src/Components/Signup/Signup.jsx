@@ -48,9 +48,9 @@ const Signup = (props) => {
   const onSubmitSellerHandler = async (e) => {
     e.preventDefault();
     if (name === "" || email === "" || password === "") {
-      // AlertContext.setAlert("Please enter all fields", "danger"); add a state
+      // AlertContext.setAlert("Please enter all fields", "danger");
     } else if (password !== password2) {
-      // AlertContext.setAlert("Passwords do not match", "danger"); add a state
+      // AlertContext.setAlert("Passwords do not match", "danger");
     } else {
       try {
         await registerSeller({ name, email, password });
@@ -63,9 +63,9 @@ const Signup = (props) => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     if (name === "" || email === "" || password === "") {
-      // AlertContext.setAlert("Please enter all fields", "danger"); add a state
+      // AlertContext.setAlert("Please enter all fields", "danger");
     } else if (password !== password2) {
-      // AlertContext.setAlert("Passwords do not match", "danger"); add a state
+      // AlertContext.setAlert("Passwords do not match", "danger");
     } else {
       try {
         await registerUser({ name, email, password });

@@ -94,7 +94,7 @@ const Navbar = () => {
                 className={classes.nav_links}
                 onClick={closeMobileMenu}
               >
-                Verify Warranty
+                Verify Product
               </NavLink>
             </li>
 
