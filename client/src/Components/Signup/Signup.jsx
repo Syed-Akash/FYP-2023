@@ -44,13 +44,32 @@ const Signup = (props) => {
       [e.target.name]: e.target.value,
     });
   };
-
+  const [alertMessage, setAlertMessage] = useState("");
+  const [alertType, setAlertType] = useState("");
   const onSubmitSellerHandler = async (e) => {
     e.preventDefault();
-    if (name === "" || email === "" || password === "") {
+    function validateEmail(email) {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailPattern.test(email);
+    }
+    function validatePassword(password) {
+      const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+      return passwordPattern.test(password);
+    }
+    if (!validateEmail(email)) {
+      setAlertMessage("Email is invalid");
+      setAlertType("danger");
+    } else if (!validatePassword(password)) {
+      setAlertMessage("Password is invalid");
+      setAlertType("danger");
+    } else if (name === "" || email === "" || password === "") {
       // AlertContext.setAlert("Please enter all fields", "danger");
+      setAlertMessage("Please enter all fields!");
+      setAlertType("danger");
     } else if (password !== password2) {
       // AlertContext.setAlert("Passwords do not match", "danger");
+      setAlertMessage("Passwords do not match!");
+      setAlertType("danger");
     } else {
       try {
         await registerSeller({ name, email, password });
@@ -62,10 +81,28 @@ const Signup = (props) => {
   };
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    if (name === "" || email === "" || password === "") {
+    function validateEmail(email) {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailPattern.test(email);
+    }
+    function validatePassword(password) {
+      const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+      return passwordPattern.test(password);
+    }
+    if (!validateEmail(email)) {
+      setAlertMessage("Email is invalid");
+      setAlertType("danger");
+    } else if (!validatePassword(password)) {
+      setAlertMessage("Password is invalid");
+      setAlertType("danger");
+    } else if (name === "" || email === "" || password === "") {
       // AlertContext.setAlert("Please enter all fields", "danger");
+      setAlertMessage("Please enter all fields!");
+      setAlertType("danger");
     } else if (password !== password2) {
       // AlertContext.setAlert("Passwords do not match", "danger");
+      setAlertMessage("Passwords do not match!");
+      setAlertType("danger");
     } else {
       try {
         await registerUser({ name, email, password });
@@ -75,12 +112,28 @@ const Signup = (props) => {
       }
     }
   };
+  const getAlertStyles = () => {
+    switch (alertType) {
+      case "success":
+        return {
+          backgroundColor: "green",
+          color: "white",
+        };
+      case "danger":
+        return {
+          backgroundColor: "red",
+          color: "white",
+        };
+      default:
+        return {};
+    }
+  };
 
   return (
     <>
       <div className={classes.signup}>
         <div className={classes.left_section}>
-          <Card width="500px" height="600px" padding="0px">
+          <Card width="500px" height="650px" padding="0px">
             <div className={classes.form_container}>
               <h1 className={classes.signup_text}>Create Account.</h1>
               <form className={classes.form}>
@@ -147,13 +200,16 @@ const Signup = (props) => {
                 <p className={classes.signup_para}>
                   Already a user?<NavLink to="/login"> Log In</NavLink>
                 </p>
+                {alertMessage && (
+                  <div style={getAlertStyles()}>{alertMessage}</div>
+                )}
                 {/* <div className={classes.btn}>
-              <CustomButton
-                // onClick={handleClick}
-                label="Sign Up"
-                // filled
-              />
-            </div> */}
+                  <CustomButton
+                    onClick={onSubmitSellerHandler}
+                    label="Sign Up"
+                    // filled
+                  />
+                </div> */}
               </form>
             </div>
           </Card>
