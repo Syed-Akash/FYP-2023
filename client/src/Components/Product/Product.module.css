@@ -11,9 +11,10 @@
   width: 100vw;
   height: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
   padding: 0 100px;
+  column-gap: 80px;
 }
 .product_content {
   display: flex;
@@ -21,7 +22,7 @@
   align-items: flex-start;
   flex-direction: column;
   margin-left: 100px;
-  color: #fff;
+  color: #ffffff;
   row-gap: 40px;
 }
 .btn {

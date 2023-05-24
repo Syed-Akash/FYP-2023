@@ -46,12 +46,7 @@ const EditProfile = () => {
           <div className={classes.inner}>
             <form className={classes.image_form}>
               <div className={classes.image_upload}>
-                <ProductCard
-                  image={imgPreview}
-                  show={true}
-                  disabled
-                  alt="user_image"
-                />
+                <ProductCard image={imgPreview} show={true} disabled alt="" />
                 <input
                   className={classes.custom_file_input}
                   type="file"

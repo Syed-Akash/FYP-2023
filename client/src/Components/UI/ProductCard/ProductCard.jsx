@@ -10,10 +10,10 @@ const ProductCard = ({
   price,
   outerWidth = "300px",
   outerHeight = "390px",
-  innerWidth = "230px",
-  innerHeight = "250px",
+  innerWidth = "250px",
+  innerHeight = "290px",
   id,
-  alt = "product_image",
+  alt = "",
   show = false,
   disabled,
 }) => {

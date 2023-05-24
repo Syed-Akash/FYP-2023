@@ -11,7 +11,7 @@ error Product_Creator_Unidentified();
 error Product_Owner_Unidentified();
 error Product_WarrantyPeriod_Over();
 
-contract WarrantyCard is ERC721, ERC721URIStorage, ERC721Burnable {
+contract WarrantyCard is ERC721URIStorage, ERC721Burnable {
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdCounter;
@@ -57,18 +57,18 @@ contract WarrantyCard is ERC721, ERC721URIStorage, ERC721Burnable {
 
     // WarrantyCard Constructor takes in the warranty duration and productName as arguments
     // ERC721 takes the NFT name and another Shorthand
-    constructor(string memory nftName, string memory nftShortHand)
-        ERC721(nftName, nftShortHand)
-    {
+    constructor(
+        string memory nftName,
+        string memory nftShortHand
+    ) ERC721(nftName, nftShortHand) {
         i_nftCreator = payable(msg.sender);
     }
 
     // Set the starting and ending time of warranty, change start time on resale
-    function changeWarrantyPeriod(bool hasPurchased, uint256 tokenId)
-        public
-        onlyByOwner(msg.sender, tokenId)
-        checkForEndOfWarranty(tokenId)
-    {
+    function changeWarrantyPeriod(
+        bool hasPurchased,
+        uint256 tokenId
+    ) public onlyByOwner(msg.sender, tokenId) checkForEndOfWarranty(tokenId) {
         // Revert the transaction if the product has not been purchased
         if (!hasPurchased) {
             revert Product_Not_Purchased();
@@ -92,21 +92,20 @@ contract WarrantyCard is ERC721, ERC721URIStorage, ERC721Burnable {
     // }
 
     // Safely mint the tokens i.e. only the retailer can add more NFT's/warranty cards in this collection
-    function safeMint(address to, string memory uri)
-        public
-        onlyByCreator(msg.sender)
-    {
+    function safeMint(
+        address to,
+        string memory uri
+    ) public onlyByCreator(msg.sender) {
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
     }
 
-    function setDurationForTokenId(uint256 tokenId, uint256 duration)
-        public
-        checkForEndOfWarranty(tokenId)
-        onlyByCreator(msg.sender)
-    {
+    function setDurationForTokenId(
+        uint256 tokenId,
+        uint256 duration
+    ) public checkForEndOfWarranty(tokenId) onlyByCreator(msg.sender) {
         tokenIdToNFTInfo[tokenId] = nftInfo({
             duration: duration,
             startTime: 0,
@@ -116,37 +115,28 @@ contract WarrantyCard is ERC721, ERC721URIStorage, ERC721Burnable {
     }
 
     // The following functions are overrides required by Solidity.
-    function _burn(uint256 tokenId)
-        internal
-        override(ERC721, ERC721URIStorage)
-    {
+    function _burn(
+        uint256 tokenId
+    ) internal override(ERC721, ERC721URIStorage) {
         super._burn(tokenId);
     }
 
     // Returns the tokenURI i.e the json metadata
-    function tokenURI(uint256 tokenId)
-        public
-        view
-        override(ERC721, ERC721URIStorage)
-        returns (string memory)
-    {
+    function tokenURI(
+        uint256 tokenId
+    ) public view override(ERC721, ERC721URIStorage) returns (string memory) {
         return super.tokenURI(tokenId);
     }
 
-    function getCurrentWarrantyDuration(uint256 tokenId)
-        public
-        view
-        checkForEndOfWarranty(tokenId)
-        returns (uint256)
-    {
+    function getCurrentWarrantyDuration(
+        uint256 tokenId
+    ) public view checkForEndOfWarranty(tokenId) returns (uint256) {
         return tokenIdToNFTInfo[tokenId].duration;
     }
 
-    function redeemWarranty(uint256 tokenId)
-        public
-        checkForEndOfWarranty(tokenId)
-        onlyByOwner(msg.sender, tokenId)
-    {
+    function redeemWarranty(
+        uint256 tokenId
+    ) public checkForEndOfWarranty(tokenId) onlyByOwner(msg.sender, tokenId) {
         tokenIdToNFTInfo[tokenId].endTime -= tokenIdToNFTInfo[tokenId].duration;
     }
 

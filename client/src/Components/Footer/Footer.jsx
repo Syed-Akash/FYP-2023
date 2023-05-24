@@ -155,7 +155,7 @@ const Footer = () => {
         </div>
         <div className={classes.footer_bottom}>
           <h3 className={classes.copyright}>
-            <span className={classes.copyright_symbol}> © </span> 2022 by AFM,
+            <span className={classes.copyright_symbol}> © </span> 2022 by AFA,
             Inc
           </h3>
         </div>

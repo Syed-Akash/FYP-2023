@@ -56,15 +56,15 @@ const Signup = (props) => {
       const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
       return passwordPattern.test(password);
     }
-    if (!validateEmail(email)) {
+    if (name === "" || email === "" || password === "") {
+      // AlertContext.setAlert("Please enter all fields", "danger");
+      setAlertMessage("Please enter all fields!");
+      setAlertType("danger");
+    } else if (!validateEmail(email)) {
       setAlertMessage("Email is invalid");
       setAlertType("danger");
     } else if (!validatePassword(password)) {
       setAlertMessage("Password is invalid");
-      setAlertType("danger");
-    } else if (name === "" || email === "" || password === "") {
-      // AlertContext.setAlert("Please enter all fields", "danger");
-      setAlertMessage("Please enter all fields!");
       setAlertType("danger");
     } else if (password !== password2) {
       // AlertContext.setAlert("Passwords do not match", "danger");
@@ -89,15 +89,15 @@ const Signup = (props) => {
       const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
       return passwordPattern.test(password);
     }
-    if (!validateEmail(email)) {
+    if (name === "" || email === "" || password === "") {
+      // AlertContext.setAlert("Please enter all fields", "danger");
+      setAlertMessage("Please enter all fields!");
+      setAlertType("danger");
+    } else if (!validateEmail(email)) {
       setAlertMessage("Email is invalid");
       setAlertType("danger");
     } else if (!validatePassword(password)) {
       setAlertMessage("Password is invalid");
-      setAlertType("danger");
-    } else if (name === "" || email === "" || password === "") {
-      // AlertContext.setAlert("Please enter all fields", "danger");
-      setAlertMessage("Please enter all fields!");
       setAlertType("danger");
     } else if (password !== password2) {
       // AlertContext.setAlert("Passwords do not match", "danger");

@@ -1,14 +1,14 @@
 .profile {
-  margin: 30px;
+  margin: 10px 30px;
 }
 .profile_card {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 30px;
-  /* margin: 20px; */
+  padding: 40px;
+  margin-right: 40px;
 }
 .profile_pic {
   width: auto;

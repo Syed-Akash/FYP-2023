@@ -2,8 +2,11 @@ import React, { useState, useContext } from "react";
 import { CustomButton, Card, ProductCard, InputField } from "../../UI";
 import classes from "./CreateProduct.module.css";
 import { sellerAuthContext } from "../../../Contexts";
+import { useNotification } from "@web3uikit/core";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const CreateProduct = () => {
+  const redirect = useNavigate();
   const { addProduct } = useContext(sellerAuthContext);
   // console.log(products.product);
 
@@ -44,6 +47,15 @@ const CreateProduct = () => {
     setImgPreview(URL.createObjectURL(file));
     setImg(e.target.files);
   };
+  const dispatch = useNotification();
+  const handleNotification = (message, title) => {
+    dispatch({
+      type: "info",
+      message,
+      title,
+      position: "topR",
+    });
+  };
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -56,7 +68,8 @@ const CreateProduct = () => {
       description === ""
     ) {
       // AlertContext.setAlert("Please enter all fields", "danger"); add a state
-      alert("please fill all filed");
+      // alert("please fill all filed");
+      handleNotification("Please Fill all Fields Properly!", "Tx Notification");
     } else {
       const dataArray = new FormData();
       dataArray.append("title", title);
@@ -68,8 +81,10 @@ const CreateProduct = () => {
       dataArray.append("warrantyDuration", warrantyDuration);
       dataArray.append("image", img["0"], img["0"].name);
       console.log(dataArray);
+      handleNotification("Product Created Successfully!", "Notification");
       try {
         await addProduct(dataArray);
+        redirect("/explore");
       } catch (error) {
         console.log(error);
       }
@@ -180,7 +195,7 @@ const CreateProduct = () => {
               />
             </div>
             <div>
-              <CustomButton filled label="Create" />
+              <CustomButton onClick={submitHandler} filled label="Create" />
             </div>
           </form>
         </Card>

@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import classes from "./Navbar.module.css";
 import Dropdown from "./Dropdown";
-// import cart_icon from "../../Assets/cart.svg";
+import cart_icon from "../../Assets/cart.svg";
 import profile_icon from "../../Assets/profile.svg";
 import { sellerAuthContext, userAuthContext } from "../../Contexts";
 
@@ -121,14 +121,10 @@ const Navbar = () => {
                   </div>
                 </li>
                 {/* <NavLink to="/cart">
-                    <div className={classes.icon_container}>
-                      <img
-                        className={classes.cart_icon}
-                        src={cart_icon}
-                        alt=""
-                      />
-                    </div>
-                  </NavLink> */}
+                  <div className={classes.icon_container}>
+                    <img className={classes.cart_icon} src={cart_icon} alt="" />
+                  </div>
+                </NavLink> */}
                 <li>
                   <NavLink
                     to={

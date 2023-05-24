@@ -8,7 +8,7 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: 40px;
+  padding-top: 20px;
 }
 .image {
   width: 100%;
@@ -21,11 +21,13 @@
 .price_container {
   display: flex;
   align-self: flex-end;
-  margin-top: 20px;
+  margin-top: 7px;
+  margin-right: 20px;
 }
 .price_symbol {
   width: auto;
-  height: 16px;
+  height: 18px;
+  margin-right: 5px;
 }
 .price {
   font-weight: 700;

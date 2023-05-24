@@ -108,6 +108,7 @@ const Product = () => {
     const getProduct = async () => {
       const pr = await getSingleProduct(productId);
       setTokenId(pr.productTokenId);
+
       setWarrantyDuration(pr.warrantyDurationInSeconds);
       setIsSold(pr.sold);
     };
@@ -119,7 +120,14 @@ const Product = () => {
     }
 
     setSellerWalletAddress(account);
-  }, [account, enableWeb3, getSingleProduct, isWeb3Enabled, productId]);
+  }, [
+    account,
+    enableWeb3,
+    getSingleProduct,
+    isWeb3Enabled,
+    productId,
+    tokenId,
+  ]);
 
   useEffect(() => {
     Moralis.onAccountChanged((account) => {
@@ -206,6 +214,7 @@ const Product = () => {
 
   const handleAddWarrantyDuration = async () => {
     setWarrantyDuration(warrantyDurationInSeconds);
+
     setTokenId(productTokenId);
 
     try {
