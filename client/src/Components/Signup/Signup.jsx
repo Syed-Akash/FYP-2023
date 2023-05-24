@@ -5,6 +5,7 @@ import userAuthContext from "../../Contexts/UserAuthContext/userAuthContext";
 import classes from "./Signup.module.css";
 import { Card, InputField, CustomButton } from "../UI";
 import SignupHero from "./SignupHero";
+import { useNotification } from "@web3uikit/core";
 
 const Signup = (props) => {
   const redirect = useNavigate();
@@ -14,7 +15,15 @@ const Signup = (props) => {
     clearSellerErrors,
     isSellerAuthenticated,
   } = useContext(sellerAuthContext);
-
+  const dispatch = useNotification();
+  const handleNotification = (message, title) => {
+    dispatch({
+      type: "info",
+      message,
+      title,
+      position: "topR",
+    });
+  };
   const { registerUser, error, clearErrors, isUserAuthenticated } =
     useContext(userAuthContext);
 
@@ -73,6 +82,7 @@ const Signup = (props) => {
     } else {
       try {
         await registerSeller({ name, email, password });
+        handleNotification("Seller Registered Successfully!", "Notification");
         redirect("/login");
       } catch (error) {
         console.log(error);
@@ -106,6 +116,7 @@ const Signup = (props) => {
     } else {
       try {
         await registerUser({ name, email, password });
+        handleNotification("User Registered Successfully!", "Notification");
         redirect("/login");
       } catch (error) {
         console.log(error);

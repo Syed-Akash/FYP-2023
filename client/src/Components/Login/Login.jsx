@@ -4,14 +4,22 @@ import { sellerAuthContext, userAuthContext } from "../../Contexts";
 import { InputField, CustomButton } from "../UI";
 import classes from "./Login.module.css";
 import LoginHero from "./LoginHero";
-
+import { useNotification } from "@web3uikit/core";
 const Login = () => {
   const redirect = useNavigate();
   const { loginSeller, sellerError, clearSellerErrors, isSellerAuthenticated } =
     useContext(sellerAuthContext);
   const { login, error, clearErrors, isUserAuthenticated } =
     useContext(userAuthContext);
-
+  const dispatch = useNotification();
+  const handleNotification = (message, title) => {
+    dispatch({
+      type: "info",
+      message,
+      title,
+      position: "topR",
+    });
+  };
   useEffect(() => {
     if (isUserAuthenticated || isSellerAuthenticated) {
       redirect("/");
@@ -47,6 +55,7 @@ const Login = () => {
     } else {
       try {
         await loginSeller({ email, password });
+        handleNotification("Login Successfull!", "Notification");
         redirect("/");
       } catch (error) {
         console.log(error);
@@ -61,6 +70,7 @@ const Login = () => {
     } else {
       try {
         await login({ email, password });
+        handleNotification("Login Successfull!", "Notification");
         redirect("/");
       } catch (error) {
         console.log(error);
