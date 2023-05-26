@@ -16,12 +16,14 @@ module.exports = {
       chainId: 31337,
       blockConfirmations: 1,
     },
-    // 	rinkeby: {
-    // 		chainId: 4,
-    // 		blockConfirmations: 6,
-    // 		url: RINKEBY_RPC_URL,
-    // 		accounts: [PRIVATE_KEY],
-    // 	},
+    sepolia: {
+      chainId: 11155111,
+      blockConfirmations: 6,
+      url: `https://eth-sepolia.g.alchemy.com/v2/B773MyFlPcWYKH-DPaf6RfCWUaho3sNK`,
+      accounts: [
+        `e9942a01b163cca688198ba0dda0fcd343a601601eaf4152acfaaee8f7707c19`,
+      ],
+    },
     localhost: {
       url: "http://127.0.0.1:8545/",
     },

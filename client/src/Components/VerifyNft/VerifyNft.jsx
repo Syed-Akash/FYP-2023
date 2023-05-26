@@ -10,7 +10,7 @@ const VerifyNft = () => {
   const { enableWeb3, isWeb3Enabled, account, Moralis, deactivateWeb3 } =
     useMoralis();
 
-  const contractAddress = "0x171F6Cd3aaa32a6f1cFDAa63fF0a2d056473C569";
+  const contractAddress = "0x31036a8602C8cdf7118aE52456CD1119d943074D";
 
   const [inputNum, setInputNum] = useState(null);
   const [ownerAddress, setOwnerAddress] = useState("");

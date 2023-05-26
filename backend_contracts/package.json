@@ -30,8 +30,11 @@
   "dependencies": {
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@^0.3.0-beta.13",
     "@openzeppelin/contracts": "^4.9.0",
+    "@openzeppelin/hardhat-upgrades": "^1.26.0",
+    "@truffle/hdwallet-provider": "^2.1.11",
     "dotenv": "^16.0.1",
-    "ethers": "^5.5.4",
-    "hardhat-deploy": "^0.11.12"
+    "ethers": "^5.7.2",
+    "hardhat-deploy": "^0.11.29",
+    "hardhat-deploy-ethers": "^0.3.0-beta.13"
   }
 }

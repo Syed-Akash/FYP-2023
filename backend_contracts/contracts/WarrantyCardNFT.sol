@@ -12,6 +12,14 @@ error Product_Owner_Unidentified();
 error Product_WarrantyPeriod_Over();
 
 contract WarrantyCard is ERC721, ERC721URIStorage, ERC721Burnable {
+    function supportsInterface(
+        bytes4 interfaceId
+    ) public view virtual override(ERC721, ERC721URIStorage) returns (bool) {
+        return
+            ERC721.supportsInterface(interfaceId) ||
+            ERC721URIStorage.supportsInterface(interfaceId);
+    }
+
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdCounter;
