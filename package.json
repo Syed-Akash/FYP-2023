@@ -1,23 +1,24 @@
 {
-  "name": "flipverse",
+  "name": "nft_fyp",
   "version": "1.0.0",
-  "description": "<h1 align=\"center\"> <font size=\"5\"> <b> FLIP - VERSE 🔥</b></h1>",
+  "description": "<h1 align=\"center\"> <font size=\"5\"> <b> NFT - FYP 🔥</b></h1>",
   "main": "index.js",
   "scripts": {
+    "dev": "cd client && npm start && cd ../server && npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cd client && npm start && cd ../server && npm start"
+    "install": "npm install --legacy-peer-deps"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Spyware007/FlipVerse.git"
+    "url": "git+https://github.com/Syed-Akash/FYP-2023.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Spyware007/FlipVerse/issues"
+    "url": "https://github.com/Syed-Akash/FYP-2023/issues"
   },
-  "homepage": "https://github.com/Spyware007/FlipVerse#readme",
+  "homepage": "https://github.com/Syed-Akash/FYP-2023#readme",
   "dependencies": {
     "@web3uikit/core": "^0.1.3",
     "concurrently": "^7.3.0",
