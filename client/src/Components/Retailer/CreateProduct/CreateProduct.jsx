@@ -3,7 +3,7 @@ import { CustomButton, Card, ProductCard, InputField } from "../../UI";
 import classes from "./CreateProduct.module.css";
 import { sellerAuthContext } from "../../../Contexts";
 import { useNotification } from "@web3uikit/core";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const CreateProduct = () => {
   const redirect = useNavigate();

@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "cd client && npm start && cd ../server && npm start",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "npm install --legacy-peer-deps"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

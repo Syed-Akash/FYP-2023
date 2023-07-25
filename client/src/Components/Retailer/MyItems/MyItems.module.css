@@ -1,5 +1,6 @@
 .my_items {
-  margin-right: 300px;
+  margin-right: 200px;
+  margin-left: 50px;
 }
 .cards_container {
   display: flex;

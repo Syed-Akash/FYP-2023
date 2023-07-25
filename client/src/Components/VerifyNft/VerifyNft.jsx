@@ -95,7 +95,7 @@ const VerifyNft = () => {
       setOwnerAddress(res.toString().toLowerCase());
 
       const warrantyBigNum = await getWarrantyDurationInSeconds({
-        onSuccess: handleSuccess,
+        // onSuccess: handleSuccess,
         onError: (error) => handleError(error),
       });
 

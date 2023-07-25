@@ -58,6 +58,8 @@ const userSchema = new Schema(
         },
       },
     ],
+    verificationToken: { type: String },
+    isVerified: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import classes from "./EditProfile.module.css";
 import { Card, InputField, CustomButton, ProductCard } from "../../UI";
 import { userAuthContext } from "../../../Contexts";
-
+import { useNotification } from "@web3uikit/core";
 const EditProfile = () => {
   const { updateImage, updateProfile } = useContext(userAuthContext);
 
@@ -18,6 +18,15 @@ const EditProfile = () => {
     const [file] = e.target.files;
     setImgPreview(URL.createObjectURL(file));
     setImg(file);
+  };
+  const dispatch = useNotification();
+  const handleNotification = (message, title) => {
+    dispatch({
+      type: "info",
+      message,
+      title,
+      position: "topR",
+    });
   };
   const onChangeHandler = (e) => {
     setUser({
@@ -37,6 +46,7 @@ const EditProfile = () => {
   const onUpdateProfileHandler = (e) => {
     e.preventDefault();
     updateProfile(user);
+    handleNotification("Profile Updated Successfully!", "Notification");
   };
   return (
     <>

@@ -1,16 +1,12 @@
 import React, { useContext } from "react";
 import classes from "./Footer.module.css";
 import { NavLink } from "react-router-dom";
-import upmanyujha from "../../Assets/spider.png";
-import aarondsouza from "../../Assets/nishant.png";
-import bhuvanesh from "../../Assets/saurabh.png";
+import syedAkash from "../../Assets/spider.png";
+import fahadRafi from "../../Assets/nishant.png";
+import ahmadArshad from "../../Assets/saurabh.png";
 
 import { Logo } from "../UI";
-import {
-  upmanyujhaLink,
-  aarondsouzaLink,
-  bhuvaneshLink,
-} from "../../Constants/social.contact";
+import { SyedAkash } from "../../Constants/social.contact";
 import { sellerAuthContext, userAuthContext } from "../../Contexts";
 
 const Footer = () => {
@@ -93,12 +89,12 @@ const Footer = () => {
 
             <div className={classes.link_container}>
               <img
-                src={upmanyujha}
-                alt="Upmanyu Jha"
+                src={syedAkash}
+                alt="Syed Akash"
                 className={classes.creators_image}
               />
               <a
-                href={upmanyujhaLink}
+                href={SyedAkash}
                 target="__blank"
                 rel="noopener noreferrer"
                 className={classes.links_special}
@@ -108,12 +104,12 @@ const Footer = () => {
             </div>
             <div className={classes.link_container}>
               <img
-                src={aarondsouza}
-                alt="Aaron Dsouza"
+                src={fahadRafi}
+                alt="Fahad Rafi"
                 className={classes.creators_image}
               />
               <a
-                href={aarondsouzaLink}
+                href={SyedAkash}
                 target="__blank"
                 rel="noopener noreferrer"
                 className={classes.links_special}
@@ -123,12 +119,12 @@ const Footer = () => {
             </div>
             <div className={classes.link_container}>
               <img
-                src={bhuvanesh}
-                alt="Bhuvanesh Kolhe"
+                src={ahmadArshad}
+                alt="Ahmad Arshad"
                 className={classes.creators_image}
               />
               <a
-                href={bhuvaneshLink}
+                href={SyedAkash}
                 target="__blank"
                 rel="noopener noreferrer"
                 className={classes.links_special}

@@ -5,6 +5,8 @@ import { InputField, CustomButton } from "../UI";
 import classes from "./Login.module.css";
 import LoginHero from "./LoginHero";
 import { useNotification } from "@web3uikit/core";
+import axios from "axios";
+
 const Login = () => {
   const redirect = useNavigate();
   const { loginSeller, sellerError, clearSellerErrors, isSellerAuthenticated } =
@@ -26,13 +28,13 @@ const Login = () => {
     }
 
     if (sellerError) {
-      // AlertContext.setAlert(error, "danger");
       clearSellerErrors();
     } else if (error) {
       clearErrors();
     }
     //eslint-disable-next-line
-  }, [sellerError, error, isSellerAuthenticated, isUserAuthenticated]); //,props.history]
+  }, [sellerError, error, isSellerAuthenticated, isUserAuthenticated]);
+
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -41,42 +43,54 @@ const Login = () => {
   const { email, password } = user;
 
   const onChangeHandler = (e) => {
-    setUser({
-      ...user,
+    setUser((prevUser) => ({
+      ...prevUser,
       [e.target.name]: e.target.value,
-    });
+    }));
+  };
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   const onSubmitSellerHandler = async (e) => {
     e.preventDefault();
     if (email === "" || password === "") {
-      // AlertContext.setAlert("Please enter all fields", "danger"); add a state
-      // AlertContext.setAlert("Passwords do not match", "danger"); add a state
+      handleNotification("Please enter all fields!", "Notification");
     } else {
-      try {
-        await loginSeller({ email, password });
-        handleNotification("Login Successfull!", "Notification");
-        redirect("/");
-      } catch (error) {
-        console.log(error);
-      }
+      await loginSeller({ email, password });
+      axios
+        .post("/api/seller/login", { email, password })
+        .then((response) => {
+          handleNotification(response.data.message);
+          redirect("/");
+        })
+        .catch((error) => {
+          handleNotification(error.response.data.message);
+        });
     }
   };
+
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     if (email === "" || password === "") {
-      // AlertContext.setAlert("Please enter all fields", "danger"); add a state
-      // AlertContext.setAlert("Passwords do not match", "danger"); add a state
+      handleNotification("Please enter all fields!", "Notification");
     } else {
-      try {
-        await login({ email, password });
-        handleNotification("Login Successfull!", "Notification");
-        redirect("/");
-      } catch (error) {
-        console.log(error);
-      }
+      await login({ email, password });
+      axios
+        .post("/api/user/login", { email, password })
+        .then((response) => {
+          handleNotification(response.data.message);
+          redirect("/");
+        })
+        .catch((error) => {
+          handleNotification(error.response.data.message);
+        });
     }
   };
+
   return (
     <>
       <div className={classes.login_section}>
@@ -88,7 +102,6 @@ const Login = () => {
           <form className={classes.form} onSubmit={onSubmitHandler}>
             <div className={classes.inputs}>
               <InputField
-                // reference={nameRef}
                 type="email"
                 onChange={onChangeHandler}
                 value={email}
@@ -98,8 +111,7 @@ const Login = () => {
                 required
               />
               <InputField
-                // reference={nameRef}
-                type="password"
+                type={showPassword ? "text" : "password"}
                 onChange={onChangeHandler}
                 value={password}
                 label="Password"
@@ -107,6 +119,15 @@ const Login = () => {
                 placeholder="Password"
                 required
               />
+            </div>
+            <div className={classes.checkbox_container}>
+              <input
+                type="checkbox"
+                checked={showPassword}
+                onChange={togglePasswordVisibility}
+                className={classes.checkBox}
+              />
+              <label className={classes.showPasswordLabel}>Show Password</label>
             </div>
             <div className={classes.btn}>
               {!isUserAuthenticated ? (
@@ -127,16 +148,9 @@ const Login = () => {
               ) : null}
             </div>
             <p className={classes.login_para}>
-              Don&apos;t have an account ?
-              <NavLink to="/signup"> Create an Account</NavLink>
+              Don&apos;t have an account?{" "}
+              <NavLink to="/signup">Create an Account</NavLink>
             </p>
-            {/* <div className={classes.btn}>
-              <CustomButton
-                // onClick={handleClick}
-                label="Sign Up"
-                // filled
-              />
-            </div> */}
           </form>
         </div>
       </div>

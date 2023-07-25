@@ -89,6 +89,11 @@ const Signup = (props) => {
       }
     }
   };
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     function validateEmail(email) {
@@ -172,7 +177,7 @@ const Signup = (props) => {
                   <InputField
                     // reference={nameRef}
                     onChange={onChangeHandler}
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     value={password}
                     label="Password"
                     name="password"
@@ -182,13 +187,24 @@ const Signup = (props) => {
                   <InputField
                     // reference={nameRef}
                     onChange={onChangeHandler}
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     value={password2}
                     label="Confirm Password"
                     name="password2"
                     placeholder="Confirm Password"
                     required
                   />
+                  <div className={classes.checkbox_container}>
+                    <input
+                      type="checkbox"
+                      checked={showPassword}
+                      onChange={togglePasswordVisibility}
+                      className={classes.checkBox}
+                    />
+                    <label className={classes.showPasswordLabel}>
+                      Show Password
+                    </label>
+                  </div>
                 </div>
                 <div className={classes.btn}>
                   {!isUserAuthenticated ? (
@@ -208,6 +224,7 @@ const Signup = (props) => {
                     />
                   ) : null}
                 </div>
+
                 <p className={classes.signup_para}>
                   Already a user?<NavLink to="/login"> Log In</NavLink>
                 </p>

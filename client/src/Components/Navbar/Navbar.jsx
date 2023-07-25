@@ -101,12 +101,12 @@ const Navbar = () => {
             {!authenticated && (
               <>
                 <li className={classes.nav_item}>
-                  <NavLink className={classes.nav_links} to="/signup">
+                  <NavLink className={classes.nav_links2} to="/signup">
                     Signup
                   </NavLink>
                 </li>
                 <li className={classes.nav_item}>
-                  <NavLink className={classes.nav_links} to="/login">
+                  <NavLink className={classes.nav_links2} to="/login">
                     Login
                   </NavLink>
                 </li>
@@ -116,7 +116,7 @@ const Navbar = () => {
             {authenticated && (
               <>
                 <li className={classes.nav_item}>
-                  <div onClick={logoutHandler} className={classes.nav_links}>
+                  <div onClick={logoutHandler} className={classes.nav_links2}>
                     Logout
                   </div>
                 </li>

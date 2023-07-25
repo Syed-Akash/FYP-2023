@@ -324,7 +324,7 @@ const Product = () => {
                 hasWarranty && (
                   <CustomButton
                     onClick={handleCreateWarrantyCard}
-                    label="Create Warranty Card NFT"
+                    label="Create Product NFT"
                     padding="0.5em 7em"
                     filled
                   />
@@ -335,7 +335,7 @@ const Product = () => {
                 hasWarranty && (
                   <CustomButton
                     onClick={handleAddWarrantyDuration}
-                    label="Add Duration"
+                    label="Add NFT Duration"
                     padding="0.5em 7em"
                     filled
                   />
@@ -348,7 +348,7 @@ const Product = () => {
                 hasWarranty && (
                   <CustomButton
                     onClick={changeWarrantyPeriodOfNFT}
-                    label={"Start Warranty"}
+                    label={"Start NFT Duration"}
                     padding="0.5em 7em"
                     filled
                   />
@@ -361,7 +361,7 @@ const Product = () => {
                 hasWarranty && (
                   <CustomButton
                     onClick={handleTransferOfWarranty}
-                    label={"Transfer Warranty Card NFT"}
+                    label={"Transfer NFT"}
                     padding="0.5em 7em"
                     filled
                   />
@@ -373,7 +373,7 @@ const Product = () => {
                 !isSold && (
                   <CustomButton
                     onClick={() => handleDispatch(productId, tokenId)}
-                    label="DISPATCH"
+                    label="DISPATCH Product"
                     padding="0.5em 11em"
                     filled
                   />
@@ -381,7 +381,7 @@ const Product = () => {
               ) : !isSold ? (
                 <CustomButton
                   onClick={() => handleDispatch(productId, tokenId)}
-                  label="DISPATCH"
+                  label="DISPATCH Product"
                   padding="0.5em 11em"
                   filled
                 />
@@ -390,7 +390,7 @@ const Product = () => {
               {isWeb3Enabled &&
                 !isSellerAuthenticated &&
                 !isSold &&
-                "This address will be used to store your warranty card"}
+                "This address will be used to store your NFT card"}
             </div>
           </div>
         </div>

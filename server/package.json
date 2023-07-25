@@ -4,8 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js",
-    "install": "npm install --legacy-peer-deps"
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",

@@ -6,6 +6,7 @@
   height: 100vh;
   padding: 0 100px;
   padding-right: 20px;
+  margin-top: 40px;
 }
 
 .left_section {
@@ -41,6 +42,17 @@
   flex-direction: column;
   row-gap: 10px;
   margin-left: 80px;
+}
+.checkbox_container {
+  padding-top: 15px;
+}
+.showPasswordLabel {
+  padding-left: 10px;
+  font-size: 18px;
+}
+.checkBox {
+  width: 20px;
+  height: 20px;
 }
 .btn {
   display: flex;

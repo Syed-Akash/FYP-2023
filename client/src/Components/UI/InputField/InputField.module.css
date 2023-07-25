@@ -28,6 +28,11 @@
   background: transparent;
   transition: border-color 0.2s;
 }
+.form__field[type="password"] {
+  color: rgb(255, 255, 255);
+  font-size: 17px;
+  font: large Verdana, sans-serif;
+}
 
 .form__field::placeholder {
   color: transparent;

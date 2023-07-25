@@ -83,7 +83,7 @@ const Home = () => {
             <div className={classes.translated}>
               <ProductCard
                 show
-                name="Full Sleeve Color Block Men Sweatshirt"
+                name="Full Sleeve Color Block Men"
                 price="649"
                 image={trial2}
                 id="62e2fa38e3b9bf471a90561e"
